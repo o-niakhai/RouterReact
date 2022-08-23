@@ -1,13 +1,243 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@transition-duration: 300ms;
+
+.transition-group {
+  position: relative;
+  flex-grow: 1;
 }
 
+.transition-group > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(-10rem);
+  transition: all @transition-duration ease-out;
+  transition-delay: @transition-duration;
+}
+
+.page-enter.page-enter-active {
+  opacity: 1;
+  transform: none;
+}
+
+.page-leave {
+  opacity: 1;
+  transition: all @transition-duration linear;
+}
+
+.page-leave.page-leave-active {
+  opacity: 0;
+}
+
+.repo-enter {
+  opacity: 0;
+  transition: all @transition-duration ease-in-out;
+  transition-delay: @transition-duration;
+}
+
+.repo-enter.repo-enter-active {
+  opacity: 1;
+}
+
+.repo-leave {
+  opacity: 1;
+  transition: all @transition-duration linear;
+}
+
+.repo-leave.repo-leave-active {
+  opacity: 0;
+  transform: translateX(-20rem);
+}
+
+
+@black: #171814;
+@blue: #66d9ef;
+@dark-gray: #272822;
+@green: #a6e22e;
+@light-gray: #49483e;
+@white: #f8f8f2;
+
+@active-color: @green;
+@highlight-color: @light-gray;
+@link-color: @blue;
+@main-content-background-color: @dark-gray;
+@side-content-background-color: @black;
+@text-color: @white;
+
+@border: 0.2rem solid @highlight-color;
+@space: 2rem;
+
+html {
+  height: 100%;
+  font-size: 10px;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: @main-content-background-color;
+  color: @text-color;
+  font-family: Arial, sans-serif;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  color: @link-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  font-family: Courier New, monospace;
+  background-color: @side-content-background-color;
+}
+
+.heading {
+  margin: 0;
+  color: @active-color;
+  font-weight: bold;
+}
+
+.heading-page {
+  .heading;
+  margin: @space 0;
+  font-size: 4rem;
+}
+
+a.NavLink {
+  color: @text-color;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+nav {
+  a.NavLink {
+    display: block;
+    padding: 0 1rem;
+    background-color: @main-content-background-color;
+
+    &:hover,
+    &.active {
+      background-color: @highlight-color;
+    }
+
+    &.active {
+      color: @active-color;
+    }
+  }
+}
+
+#app,
+.App {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  padding: 0 @space;
+  background-color: @side-content-background-color;
+}
+
+.App-header {
+  border-bottom: @border;
+  z-index: 1;
+}
+
+.App-heading {
+  .heading;
+  font-size: 2.4rem;
+  font-style: italic;
+}
+
+.App-body {
+  display: flex;
+  flex-grow: 1;
+}
+
+.App-navList {
+  display: flex;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Home-heading {
+  .heading-page;
+}
+
+.About {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.About-heading {
+  .heading-page;
+}
+
+.About-body {
+  max-width: 76.8rem;
+}
+
+.Repos {
+  display: flex;
+  padding-left: @space;
+  align-items: stretch;
+  flex-grow: 1;
+  background-color: @side-content-background-color;
+}
+
+.Repos-nav {
+  border-right: @border;
+  flex-basis: 20rem;
+  background-color: @side-content-background-color;
+  z-index: 1;
+}
+
+.Repos-nav {
+  border-right: @border;
+}
+
+.Repos-heading {
+  .heading-page;
+}
+
+.Repos-repoContainer {
+  background-color: @main-content-background-color;
+}
+
+.Repo {
+  margin: 0 @space;
+}
+
+.Repo-heading {
+  .heading-page;
 }
