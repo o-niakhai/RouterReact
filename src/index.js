@@ -1,7 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
-import { HashRouter, Switch, Route, AppWithRouter } from 'react-router-dom';
+import { Switch, Route, AppWithRouter } from 'react-router-dom';
 
 const ReactCSSTransitionGroup = ReactTransitionGroup.CSSTransitionGroup;
 const {render} = ReactDOM;
@@ -53,8 +52,7 @@ function App(props) {
           className={transitionClassName}
           transitionName={pageTransitionName}
           transitionEnterTimeout={transitionEnterTimeout}
-          transitionLeaveTimeout={transitionDuration}
-        >
+          transitionLeaveTimeout={transitionDuration}>
           {React.cloneElement(props.children, {
             key: getSubstringUntilNth(props.location.pathname, '/', 2),
             location: props.location,
