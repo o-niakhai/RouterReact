@@ -1,6 +1,5 @@
 import * as React from "react";
-import { HashRouter } from "react-router-dom";
-import { Switch, Route, AppWithRouter } from 'react-router-dom';
+import { Switch, Route, AppWithRouter, HashRouter } from 'react-router-dom';
 
 const ReactCSSTransitionGroup = ReactTransitionGroup.CSSTransitionGroup;
 const {render} = ReactDOM;
