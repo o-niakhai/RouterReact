@@ -97,8 +97,7 @@ function Repos(props) {
           className={`${transitionClassName} Repos-repoContainer`}
           transitionName={repoTransitionName}
           transitionEnterTimeout={transitionEnterTimeout}
-          transitionLeaveTimeout={transitionDuration}
-        >
+          transitionLeaveTimeout={transitionDuration}>
           <Route
             key={props.location.pathname}
             location={props.location}
